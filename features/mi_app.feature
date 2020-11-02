@@ -16,7 +16,7 @@ Then mostrar "Ganaste"
 Scenario: errar letra
 Given inicio la aplicacion con la letra "A"
 When envia letra "B"
-Then mostrar "Perdiste"
+Then mostrar "Sigue jugando. Te quedan 2 intentos"
 
 Scenario: mostrar guiones por palabra
 When inicio la aplicacion con la palabra "CASA"
@@ -26,3 +26,9 @@ Scenario: mostrar letra acertada en palabra
 Given inicio la aplicacion con la palabra "CASA"
 When envia letra "C"
 Then imprime "C _ _ _"
+
+Scenario: disminuir un intento al fallar una letra de la palabra
+Given inicio la aplicacion con la palabra "CASA"
+When envia letra "X"
+Then imprime "_ _ _ _" 
+And mostrar "Sigue jugando. Te quedan 2 intentos"

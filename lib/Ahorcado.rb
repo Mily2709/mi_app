@@ -4,18 +4,23 @@ class Ahorcado
         @palabra="_"
         @palabraSecreta=palabraSecreta
         @guiones = "_"
+        @intentos=3
     end
     def arriesgar(letra)
         if @palabraSecreta.include?(letra) 
             @guiones[@palabraSecreta.index(letra)]=letra
+        else
+            @intentos=@intentos-1
         end
-        return  @guiones
+        return @guiones
     end
 
     def evaluar
         if !@guiones.include?('_')
             return "Ganaste"
-        else
+        elsif @intentos>0
+            return "Sigue jugando. Te quedan #{@intentos} intentos"
+        else            
             return "Perdiste"
         end  
     end
