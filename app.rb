@@ -3,6 +3,7 @@ require './config'
 require './lib/Ahorcado'
 
 ahorcado= nil
+
 get '/secreto' do
     ahorcado=Ahorcado.new(params[:p])
     @palabra= ahorcado.mostrarGuiones()

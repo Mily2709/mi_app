@@ -11,7 +11,7 @@ Then("imprime {string}") do |mensaje|
 end
 
 Given("inicio la aplicacion con la letra {string}") do |string|
-    visit '/'
+    visit "/secreto?p=#{string}"
 end
 
 When("envia letra {string}") do |string|
