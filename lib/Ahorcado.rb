@@ -8,7 +8,10 @@ class Ahorcado
     end
     def arriesgar(letra)
         if @palabraSecreta.include?(letra) 
-            @guiones[@palabraSecreta.index(letra)]=letra
+            indices=@palabraSecreta.enum_for(:scan, /(?=#{letra})/).map { Regexp.last_match.offset(0).first }
+            for indice in indices do
+                @guiones[indice*2]=letra
+            end
         else
             @intentos=@intentos-1
         end
@@ -28,11 +31,8 @@ class Ahorcado
 
     def mostrarGuiones()
         cantidadLetras = @palabraSecreta.length
-    
-        for i in (1..cantidadLetras-1)  do
-            
+        for i in (1..cantidadLetras-1)  do    
             @guiones = @guiones.concat(" _");
-
         end
         return @guiones       
     end
