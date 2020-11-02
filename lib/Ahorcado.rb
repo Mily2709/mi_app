@@ -3,24 +3,34 @@ class Ahorcado
     def initialize(palabraSecreta)
         @palabra="_"
         @palabraSecreta=palabraSecreta
+        @guiones = "_"
     end
     def arriesgar(letra)
-        if @palabraSecreta.eql? letra
-            return "Ganaste"            
+        if @palabraSecreta.include?(letra) 
+            @guiones[@palabraSecreta.index(letra)]=letra
+        end
+        return  @guiones
+    end
+
+    def evaluar
+        if !@guiones.include?('_')
+            return "Ganaste"
         else
             return "Perdiste"
-        end
+        end  
     end
+
 
     def mostrarGuiones()
         cantidadLetras = @palabraSecreta.length
-        guiones = "_"
+    
         for i in (1..cantidadLetras-1)  do
             
-            guiones = guiones.concat(" _");
+            @guiones = @guiones.concat(" _");
 
         end
-        return guiones       
+        return @guiones       
     end
+
 
 end

@@ -21,3 +21,8 @@ Then mostrar "Perdiste"
 Scenario: mostrar guiones por palabra
 When inicio la aplicacion con la palabra "CASA"
 Then imprime "_ _ _ _"
+
+Scenario: mostrar letra acertada en palabra
+Given inicio la aplicacion con la palabra "CASA"
+When envia letra "C"
+Then imprime "C _ _ _"
