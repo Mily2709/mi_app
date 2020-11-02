@@ -23,3 +23,7 @@ Then("mostrar {string}") do |mensaje|
     expect(page).to have_css "div#mensaje", text: mensaje
 end
 
+When("inicio la aplicacion con la palabra {string}") do |palabra|
+    visit "/secreto?p=#{palabra}"
+end
+
